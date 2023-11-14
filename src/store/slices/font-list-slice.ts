@@ -4,13 +4,9 @@ import { GoogleFont } from '~/types/google-font-type';
 
 export const fetchFontList = createAsyncThunk('fontList/fetchFontListStatus', async (_, thunkAPI) => {
   try {
-    const response = await fetch(
-      `${GOOGLE_FONTS_API_URL}webfonts/v1/webfonts?key=${
-        import.meta.env.VITE_GOOGLE_FONTS_API_KEY
-      }&sort=alpha&subset=latin`,
-    );
-    const data = await response.json();
-    return data.items;
+    
+    const data =""
+    return "data.;"
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response.data);
   }
@@ -33,7 +29,6 @@ const fontListSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFontList.fulfilled, (state, action) => {
-        state.fontList = action.payload;
         state.loading = 'succeeded';
       })
       .addCase(fetchFontList.pending, (state) => {
